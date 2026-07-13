@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSS Quiz</title>
+    <title>Basic Parts of Computer Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<h1>📝 Computer System Servicing Quiz</h1>
-
-<h3 id="questionNumber">Question 1/15</h3>
+<h1>📝 Basic Parts of Computer Quiz</h1>
+<h3 id="questionNumber">Question 1/10</h3>
 
 <p id="question">Which device connects a home network to the Internet?</p>
 <button id="choice1" onclick="checkAnswer(this.innerHTML)"></button>
@@ -43,7 +42,27 @@ Next Lesson ➜
 <button>Back to Home</button>
 </a>
 <script>
+
+let currentQuestion = 1;
+let score = 0;
+let answered = false;
+
+let correctAnswers = [
+"CPU",
+"RAM",
+"Motherboard",
+"Hard Disk Drive",
+"Solid State Drive",
+"Power Supply Unit",
+"Keyboard",
+"Monitor",
+"Operating System",
+"Storage Device"
+];
+
+
 function checkAnswer(answer){
+
 if(answered){
 return;
 }
@@ -58,7 +77,6 @@ document.getElementById("result").innerHTML =
 "<span style='color:green;font-weight:bold;'>✅ Correct!</span>";
 
 }
-
 else{
 
 document.getElementById("result").innerHTML =
@@ -67,26 +85,8 @@ document.getElementById("result").innerHTML =
 }
 
 }
-let currentQuestion = 1;
-let score = 0;
-let answered = false;
-let correctAnswers = [
-"Router",
-"Switch",
-"UTP Cable",
-"Local Area Network",
-"Cable Tester",
-"Windows",
-"RJ45",
-"Router",
-"Switch",
-"Operating System",
-"Modem",
-"UTP Cable",
-"Basic Input Output System",
-"Hard Drive",
-"Maintenance and repair"
-];
+
+
 function showChoices(a,b,c,d){
 
 document.getElementById("choice1").innerHTML = a;
@@ -96,252 +96,136 @@ document.getElementById("choice4").innerHTML = d;
 
 }
 
+
 showChoices(
-"Router",
-"Switch",
+"CPU",
+"RAM",
 "Monitor",
 "Keyboard"
 );
 
 
 function nextQuestion(){
-showChoices(
-"Router",
-"Switch",
-"Monitor",
-"Keyboard"
-);
 
 currentQuestion++;
+answered = false;
 
-document.getElementById("questionNumber").innerHTML =
-"Question " + currentQuestion + "/15";
+document.getElementById("result").innerHTML = "";
+
+
+let question = document.getElementById("question");
+
+
 if(currentQuestion == 2){
 
-document.getElementById("question").innerHTML =
-"Which device connects multiple computers inside a LAN?";
+question.innerHTML =
+"What component stores temporary data while the computer is running?";
 
-showChoices(
-"Switch",
-"Router",
-"Monitor",
-"Keyboard"
-);
+showChoices("RAM","HDD","SSD","Monitor");
 
 }
 
 else if(currentQuestion == 3){
 
-document.getElementById("question").innerHTML =
-"What type of cable is commonly used for Ethernet networks?";
+question.innerHTML =
+"What is the main board of a computer called?";
+
+showChoices("Motherboard","Keyboard","Mouse","Printer");
 
 }
 
 else if(currentQuestion == 4){
 
-document.getElementById("question").innerHTML =
-"What does LAN stand for?";
+question.innerHTML =
+"Which component stores files permanently?";
 
-showChoices(
-"Local Area Network",
-"Long Area Network",
-"Large Area Network",
-"Local Access Network"
-);
+showChoices("Hard Disk Drive","RAM","CPU","Monitor");
 
 }
 
 else if(currentQuestion == 5){
 
-document.getElementById("question").innerHTML =
-"Which tool is used to test network cables?";
+question.innerHTML =
+"Which storage device is faster and uses flash memory?";
 
-showChoices(
-"Cable Tester",
-"Screwdriver",
-"Keyboard",
-"Mouse"
-);
+showChoices("Solid State Drive","Keyboard","Mouse","Speaker");
 
 }
+
 else if(currentQuestion == 6){
 
-document.getElementById("question").innerHTML =
-"What is the purpose of an RJ45 connector?";
+question.innerHTML =
+"What supplies power to computer components?";
 
-showChoices(
-"Connect network cables",
-"Store files",
-"Display images",
-"Print documents"
-);
+showChoices("Power Supply Unit","RAM","CPU","Monitor");
 
 }
 
 else if(currentQuestion == 7){
 
-document.getElementById("question").innerHTML =
-"What does UTP stand for?";
+question.innerHTML =
+"Which device is used for typing information?";
 
-showChoices(
-"Unshielded Twisted Pair",
-"Universal Transfer Port",
-"United Technology Program",
-"User Type Protocol"
-);
+showChoices("Keyboard","Monitor","Speaker","Printer");
 
 }
 
-
 else if(currentQuestion == 8){
 
-document.getElementById("question").innerHTML =
-"Which device provides wireless network access?";
+question.innerHTML =
+"Which device displays information from the computer?";
 
-showChoices(
-"Wireless Router",
-"Monitor",
-"Keyboard",
-"Printer"
-);
+showChoices("Monitor","Mouse","Keyboard","CPU");
 
 }
 
 else if(currentQuestion == 9){
 
-document.getElementById("question").innerHTML =
-"What is the main purpose of a switch?";
+question.innerHTML =
+"What software manages computer hardware?";
 
-showChoices(
-"Connect devices in a network",
-"Create documents",
-"Play videos",
-"Scan pictures"
-);
+showChoices("Operating System","Keyboard","RAM","Hard Drive");
 
 }
+
 else if(currentQuestion == 10){
 
-document.getElementById("question").innerHTML =
-"Which operating system is commonly used in computers?";
+question.innerHTML =
+"Which device is used to save files and data?";
 
-showChoices(
-"Windows",
-"Android Charger",
-"HDMI",
-"RJ45"
-);
-
-}
-else if(currentQuestion == 11){
-
-document.getElementById("question").innerHTML =
-"What is the purpose of a modem in a network?";
-
-showChoices(
-"Connect to Internet Service Provider",
-"Store pictures",
-"Play music",
-"Print documents"
-);
+showChoices("Storage Device","Input Device","Output Device","Cooling Device");
 
 }
 
 
-else if(currentQuestion == 12){
+if(currentQuestion == 10){
 
-document.getElementById("question").innerHTML =
-"Which cable type is commonly used for Ethernet connection?";
+document.getElementById("choice1").style.display="none";
+document.getElementById("choice2").style.display="none";
+document.getElementById("choice3").style.display="none";
+document.getElementById("choice4").style.display="none";
 
-showChoices(
-"UTP Cable",
-"HDMI Cable",
-"Power Cable",
-"Audio Cable"
-);
+document.getElementById("questionNumber").innerHTML =
+"Quiz Completed!";
 
-}
-else if(currentQuestion == 13){
+question.innerHTML =
+"Your Score: " + score + "/10";
 
-document.getElementById("question").innerHTML =
-"What does BIOS stand for?";
+document.getElementById("restartBtn").style.display="inline-block";
 
-showChoices(
-"Basic Input Output System",
-"Binary Internet Operating Setup",
-"Basic Internal Online Service",
-"Backup Input Operating Software"
-);
+document.getElementById("nextLessonBtn").style.display="inline-block";
+
+document.getElementById("nextQuestionBtn").style.display="none";
 
 }
+else{
 
-
-else if(currentQuestion == 14){
-
-document.getElementById("question").innerHTML =
-"Which component stores data permanently in a computer?";
-
-showChoices(
-"Hard Drive",
-"RAM",
-"Keyboard",
-"Mouse"
-);
+document.getElementById("questionNumber").innerHTML =
+"Question " + currentQuestion + "/10";
 
 }
 
-else if(currentQuestion == 15){
-
-document.getElementById("question").innerHTML =
-"What is the main purpose of Computer System Servicing?";
-
-showChoices(
-"Maintain and repair computer systems",
-"Create games only",
-"Draw pictures",
-"Watch videos"
-);
-
 }
-if(currentQuestion == 15){
-    document.getElementById("choice1").style.display = "none";
-    document.getElementById("choice2").style.display = "none";
-    document.getElementById("choice3").style.display = "none";
-    document.getElementById("choice4").style.display = "none";
-
-    document.getElementById("questionNumber").innerHTML = "Quiz Completed!";
-
-    let message = "";
-
-    if(score == 15){
-        message = "🏆 Perfect! Outstanding!";
-    }
-    else if(score >= 12){
-        message = "🌟 Excellent!";
-    }
-    else if(score >= 9){
-        message = "👏 Very Good!";
-    }
-    else if(score >= 6){
-        message = "👍 Good Job!";
-    }
-    else{
-        message = "📚 Keep Practicing!";
-    }
-
-    document.getElementById("question").innerHTML =
-    "Your Score: " + score + "/15<br><br>" + message;
-
-    document.getElementById("restartBtn").style.display = "inline-block";
-    document.getElementById("nextLessonBtn").style.display = "inline-block";
-    document.getElementById("nextQuestionBtn").style.display = "none";
-}
-document.getElementById("result").innerHTML = "";
-
-answered = false;
-}
-
 </script>
-
 </body>
 </html>
