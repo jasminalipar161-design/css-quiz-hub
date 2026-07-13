@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hand Tools Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>📝Hand Tools Quiz</h1>
+
+<h3 id="questionNumber">Question 1/10</h3>
+
+<p id="question">
+Which tool category is primarily used to prevent static buildup on computer parts?
+</p>
+
+<button id="choice1" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice2" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice3" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice4" onclick="checkAnswer(this.innerHTML)"></button>
+
+<p id="result"></p>
+<br>
+
+<button id="restartBtn" onclick="location.reload()" style="display:none;">
+Restart Quiz
+</button>
+
+<button id="nextLessonBtn"
+onclick="location.href='occupational-health-and-safety-quiz.html'"
+style="display:none;">
+Next Lesson ➜
+</button>
+
+<button id="nextQuestionBtn" onclick="nextQuestion()">Next Question</button>
+
+<br><br>
+
+<a href="index.html">
+<button>Back to Home</button>
+</a>
+
+<script>
+
+let currentQuestion = 1;
+let score = 0;
+let answered = false;
+let correctAnswers = [
+"Electro-Static Discharge (ESD) tools",
+"Multimeter",
+"Ammoniated glass cleaners",
+"Hex driver",
+"Isopropyl alcohol",
+"Testing computer ports",
+"It can cause physical damage to the equipment",
+"Compressed air",
+"Torx screwdriver",
+"Cleaning components without leaving debris"
+];
+
+function checkAnswer(answer){
+
+if(answered){
+return;
+}
+
+answered = true;
+
+if(answer == correctAnswers[currentQuestion - 1]){
+
+score++;
+
+document.getElementById("result").innerHTML =
+"<span style='color:green;font-weight:bold;'>✅ Correct!</span>";
+
+}else{
+
+document.getElementById("result").innerHTML =
+"<span style='color:red;font-weight:bold;'>❌ Incorrect!</span>";
+
+}
+
+}
+
+function showChoices(a,b,c,d){
+
+document.getElementById("choice1").innerHTML = a;
+document.getElementById("choice2").innerHTML = b;
+document.getElementById("choice3").innerHTML = c;
+document.getElementById("choice4").innerHTML = d;
+
+}
+
+showChoices(
+"Hand tools",
+"Cleaning tools",
+"Electro-Static Discharge (ESD) tools",
+"Diagnostic tools"
+);
+
+function nextQuestion(){
+
+currentQuestion++;
+
+document.getElementById("questionNumber").innerHTML =
+"Question " + currentQuestion + "/10";
+if(currentQuestion == 2){
+
+document.getElementById("question").innerHTML =
+"Which tool is best for checking the integrity and quality of electrical circuits in a computer?";
+
+showChoices(
+"Loopback adapter",
+"Multimeter",
+"Part retriever",
+"Hex driver"
+);
+
+}
+
+else if(currentQuestion == 3){
+
+document.getElementById("question").innerHTML =
+"What should you NOT use when cleaning an LCD monitor screen?";
+
+showChoices(
+"Lint-free cloth",
+"Mild cleaning solution",
+"Ammoniated glass cleaners",
+"Distilled water"
+);
+
+}
+
+else if(currentQuestion == 4){
+
+document.getElementById("question").innerHTML =
+"Which tool is specifically designed to tighten or loosen hexagonal-headed screws?";
+
+showChoices(
+"Phillips head screwdriver",
+"Torx screwdriver",
+"Flat head screwdriver",
+"Hex driver"
+);
+
+}
+
+else if(currentQuestion == 5){
+
+document.getElementById("question").innerHTML =
+"When cleaning computer component contacts, which substance is recommended?";
+
+showChoices(
+"Mild dish soap",
+"Isopropyl alcohol",
+"Ammonia solution",
+"Tap water"
+);
+
+}
+else if(currentQuestion == 6){
+
+document.getElementById("question").innerHTML =
+"What is the primary function of a loopback adapter?";
+
+showChoices(
+"Retrieving small parts",
+"Testing computer ports",
+"Bundling loose cables",
+"Removing loose dust"
+);
+
+}
+
+else if(currentQuestion == 7){
+
+document.getElementById("question").innerHTML =
+"Why is it dangerous to use a screwdriver as a pry bar?";
+
+showChoices(
+"It wears out the screwdriver tip",
+"It can cause physical damage to the equipment",
+"It violates electrical safety rules",
+"It causes static discharge buildup"
+);
+
+}
+
+else if(currentQuestion == 8){
+
+document.getElementById("question").innerHTML =
+"Which tool would you select to remove dust from a PC without touching components?";
+
+showChoices(
+"Compressed air",
+"Lint-free cloth",
+"Needle-nose pliers",
+"Part retriever"
+);
+
+}
+
+else if(currentQuestion == 9){
+
+document.getElementById("question").innerHTML =
+"Which of these tools features a star-shaped tip design?";
+
+showChoices(
+"Hex driver",
+"Torx screwdriver",
+"Phillips head screwdriver",
+"Flat head screwdriver"
+);
+
+}
+
+else if(currentQuestion == 10){
+
+document.getElementById("question").innerHTML =
+"What is the proper use for a lint-free cloth during maintenance?";
+
+showChoices(
+"Stripping insulation from wires",
+"Testing computer ports",
+"Cleaning components without leaving debris",
+"Retrieving small screws"
+);
+
+}
+else if(currentQuestion > 10){
+
+document.getElementById("questionNumber").innerHTML =
+"Quiz Completed!";
+
+let message = "";
+
+if(score == 10){
+message = "🏆 Perfect! Outstanding!";
+}
+
+else if(score >= 8){
+message = "🌟 Excellent!";
+}
+
+else if(score >= 6){
+message = "👏 Very Good!";
+}
+
+else if(score >= 4){
+message = "👍 Good Job!";
+}
+
+else{
+message = "📚 Keep Practicing!";
+}
+
+document.getElementById("question").innerHTML =
+"Your Score: " + score + "/10<br><br>" + message;
+
+document.getElementById("choice1").style.display = "none";
+document.getElementById("choice2").style.display = "none";
+document.getElementById("choice3").style.display = "none";
+document.getElementById("choice4").style.display = "none";
+
+document.getElementById("restartBtn").style.display = "inline-block";
+document.getElementById("nextLessonBtn").style.display = "inline-block";
+document.getElementById("nextQuestionBtn").style.display = "none";
+}
+document.getElementById("result").innerHTML = "";
+answered = false;
+
+}
+
+</script>
+
+</body>
+</html>

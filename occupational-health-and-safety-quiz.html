@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Occupational Health and Safety Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>📝 Occupational Health and Safety Quiz</h1>
+
+<h3 id="questionNumber">Question 1/10</h3>
+
+<p id="question">
+What is the correct sequence of the "3 Safe Steps"?
+</p>
+
+<button id="choice1" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice2" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice3" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice4" onclick="checkAnswer(this.innerHTML)"></button>
+
+<p id="result"></p>
+
+<br>
+
+<button id="restartBtn"
+onclick="location.reload()"
+style="display:none;">
+Restart Quiz
+</button>
+<button id="restartBtn" onclick="location.reload()" style="display:none;">
+Restart Quiz
+</button>
+
+<button id="nextLessonBtn"
+onclick="location.href='types-and-parts-of-computers-quiz.html'"
+style="display:none;">
+Next Lesson ➜
+</button>
+
+<button id="nextQuestionBtn" onclick="nextQuestion()">Next Question</button>
+<br><br>
+
+<a href="index.html">
+<button>Back to Home</button>
+</a>
+
+<script>
+
+let currentQuestion = 1;
+let score = 0;
+let answered = false;
+let correctAnswers = [
+"Spot the Hazard, Assess the Risk, Make the Changes",
+"Getting a finger caught in moving printer parts",
+"Maintaining cleanliness and consistent workplace standards",
+"At a distance within an arm's length from your eyes",
+"Personal Protective Equipment (PPE)",
+"Only keeping what is needed and discarding what is not",
+"Electric Shock Hazard",
+"Straight and parallel to the floor",
+"To prevent unnecessary twisting or inclination of the head",
+"A system to prevent work-related injury and illness"
+];
+
+function checkAnswer(answer){
+
+if(answered){
+return;
+}
+
+answered = true;
+
+if(answer == correctAnswers[currentQuestion - 1]){
+
+score++;
+
+document.getElementById("result").innerHTML =
+"<span style='color:green;font-weight:bold;'>✅ Correct!</span>";
+
+}else{
+
+document.getElementById("result").innerHTML =
+"<span style='color:red;font-weight:bold;'>❌ Incorrect!</span>";
+
+}
+
+}
+
+function showChoices(a,b,c,d){
+
+document.getElementById("choice1").innerHTML = a;
+document.getElementById("choice2").innerHTML = b;
+document.getElementById("choice3").innerHTML = c;
+document.getElementById("choice4").innerHTML = d;
+
+}
+
+showChoices(
+"Assess the Risk, Spot the Hazard, Make the Changes",
+"Make the Changes, Assess the Risk, Spot the Hazard",
+"Spot the Hazard, Assess the Risk, Make the Changes",
+"Spot the Hazard, Make the Changes, Assess the Risk"
+);
+
+function nextQuestion(){
+
+currentQuestion++;
+
+document.getElementById("questionNumber").innerHTML =
+"Question " + currentQuestion + "/10";
+if(currentQuestion == 2){
+
+document.getElementById("question").innerHTML =
+"Which is an example of a Mechanical Hazard for computer technicians?";
+
+showChoices(
+"Tripping over a loose power cable on the floor",
+"Touching a live 220V power supply unit",
+"Getting a finger caught in moving printer parts",
+"Getting cleaning solvent in your eyes"
+);
+
+}
+
+else if(currentQuestion == 3){
+
+document.getElementById("question").innerHTML =
+'In the 5S methodology, what does "Seiketsu" (Standardize) mean?';
+
+showChoices(
+"Removing all unnecessary items from the workspace",
+"Maintaining cleanliness and consistent workplace standards",
+"Cleaning the computer and polishing the desk",
+"Arranging tools in a specific, easy-to-reach order"
+);
+
+}
+
+else if(currentQuestion == 4){
+
+document.getElementById("question").innerHTML =
+"For proper ergonomics, where should the computer monitor be placed?";
+
+showChoices(
+"At least two arm lengths away from your eyes",
+"Directly under a bright overhead light source",
+"At a distance within an arm's length from your eyes",
+"Higher than your forehead so you have to look up"
+);
+
+}
+
+else if(currentQuestion == 5){
+
+document.getElementById("question").innerHTML =
+'Which part of the Hierarchy of Controls is the "last resort" or least effective?';
+
+showChoices(
+"Elimination",
+"Substitution",
+"Administrative Controls",
+"Personal Protective Equipment (PPE)"
+);
+
+}
+else if(currentQuestion == 6){
+
+document.getElementById("question").innerHTML =
+'According to the slides, what is the key point of "Seiri" (Sorting)?';
+
+showChoices(
+"Only keeping what is needed and discarding what is not",
+"Keeping the floor polished and free of trash",
+"Checking your posture at frequent intervals",
+"Labeling all chemicals with warning signs"
+);
+
+}
+
+else if(currentQuestion == 7){
+
+document.getElementById("question").innerHTML =
+"Which hazard involves a range of 3.3 to 25 volts inside a computer?";
+
+showChoices(
+"Physical Hazard",
+"Electric Shock Hazard",
+"Mechanical Hazard",
+"Chemical Hazard"
+);
+
+}
+
+else if(currentQuestion == 8){
+
+document.getElementById("question").innerHTML =
+"What is the ideal position for your wrists while using a keyboard?";
+
+showChoices(
+"Bent upward at a sharp angle",
+"Resting heavily on the edge of the desk",
+"Straight and parallel to the floor",
+"Bent downward toward your lap"
+);
+
+}
+
+else if(currentQuestion == 9){
+
+document.getElementById("question").innerHTML =
+'Why is a "Document Holder" recommended for a computer workstation?';
+
+showChoices(
+"To make the desk look more professional",
+"To prevent unnecessary twisting or inclination of the head",
+"To keep the documents from getting dusty",
+"To provide extra light for reading paper files"
+);
+
+}
+
+else if(currentQuestion == 10){
+
+document.getElementById("question").innerHTML =
+"What is the definition of Occupational Health and Safety (OHS)?";
+
+showChoices(
+"A plan to repair broken computers as fast as possible",
+"A system to prevent work-related injury and illness",
+"A rule that only applies to the manager of a company",
+"A method for installing new software safely"
+);
+
+}
+
+else if(currentQuestion > 10){
+
+document.getElementById("questionNumber").innerHTML =
+"Quiz Completed!";
+
+let message = "";
+
+if(score == 10){
+message = "🏆 Perfect! Outstanding!";
+}
+
+else if(score >= 8){
+message = "🌟 Excellent!";
+}
+
+else if(score >= 6){
+message = "👏 Very Good!";
+}
+
+else if(score >= 4){
+message = "👍 Good Job!";
+}
+
+else{
+message = "📚 Keep Practicing!";
+}
+document.getElementById("question").innerHTML =
+"Your Score: " + score + "/10<br><br>" + message;
+document.getElementById("choice1").style.display = "none";
+document.getElementById("choice2").style.display = "none";
+document.getElementById("choice3").style.display = "none";
+document.getElementById("choice4").style.display = "none";
+
+document.getElementById("restartBtn").style.display = "inline-block";
+document.getElementById("restartBtn").style.display = "inline-block";
+document.getElementById("nextLessonBtn").style.display = "inline-block";
+document.getElementById("nextQuestionBtn").style.display = "none";
+}
+document.getElementById("result").innerHTML = "";
+
+answered = false;
+
+}
+</script>
+
+</body>
+</html>

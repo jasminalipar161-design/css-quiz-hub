@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Motherboard Components Quiz
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>📝 Motherboard Components Quiz</h1>
+
+<h3 id="questionNumber">Question 1/10</h3>
+
+<p id="question">What is the primary function of a motherboard in a computer system?</p>
+
+<button id="choice1" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice2" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice3" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice4" onclick="checkAnswer(this.innerHTML)"></button>
+
+<p id="result"></p>
+
+<br>
+<button id="restartBtn" onclick="location.reload()" style="display:none;">
+Restart Quiz
+</button>
+<button id="nextLessonBtn"
+onclick="location.href='ict-handtools-quiz.html'"
+style="display:none;">
+Next Lesson ➜
+</button>
+<button id="nextQuestionBtn" onclick="nextQuestion()">Next Question</button>
+<br><br>
+<a href="index.html">
+<button>Back to Home</button>
+</a>
+
+<script>
+
+let currentQuestion = 1;
+let score = 0;
+let answered = false;
+
+let correctAnswers = [
+"It acts as the main circuit board backbone.",
+"4/8 pin CPU power connector",
+"CMOS battery",
+"To store energy and filter voltage",
+"North Bridge",
+"Reset Switch",
+"It acts as a semiconductor device for logic",
+"IDE Slot",
+"They act as switches to configure settings",
+"South Bridge"
+];
+
+function checkAnswer(answer){
+
+if(answered){
+return;
+}
+
+answered = true;
+
+if(answer == correctAnswers[currentQuestion - 1]){
+
+score++;
+
+document.getElementById("result").innerHTML =
+"<span style='color:green;font-weight:bold;'>✅ Correct!</span>";
+
+}else{
+
+document.getElementById("result").innerHTML =
+"<span style='color:red;font-weight:bold;'>❌ Incorrect!</span>";
+
+}
+
+}
+
+function showChoices(a,b,c,d){
+
+document.getElementById("choice1").innerHTML = a;
+document.getElementById("choice2").innerHTML = b;
+document.getElementById("choice3").innerHTML = c;
+document.getElementById("choice4").innerHTML = d;
+
+}
+
+showChoices(
+"It acts as the main circuit board backbone.",
+"It stores all temporary data for the CPU.",
+"It generates the power for the entire system.",
+"It converts digital signals to analog ones."
+);
+
+function nextQuestion(){
+
+currentQuestion++;
+
+document.getElementById("questionNumber").innerHTML =
+"Question " + currentQuestion + "/10";
+if(currentQuestion == 2){
+
+document.getElementById("question").innerHTML =
+"Which connector provides power specifically to the CPU?";
+
+showChoices(
+"24-pin ATX power connector",
+"4/8 pin CPU power connector",
+"4-pin CPU fan header",
+"USB header connector"
+);
+
+}
+
+else if(currentQuestion == 3){
+
+document.getElementById("question").innerHTML =
+"Which component is responsible for maintaining the system clock when power is off?";
+
+showChoices(
+"BIOS chip",
+"South Bridge",
+"CMOS battery",
+"Super I/O controller"
+);
+
+}
+
+else if(currentQuestion == 4){
+
+document.getElementById("question").innerHTML =
+"What is the primary role of capacitors on a motherboard?";
+
+showChoices(
+"To provide high-speed data paths",
+"To store energy and filter voltage",
+"To manage legacy I/O functions",
+"To expand hardware capabilities"
+);
+
+}
+
+else if(currentQuestion == 5){
+
+document.getElementById("question").innerHTML =
+"Which chipset component handles high-speed communication?";
+
+showChoices(
+"South Bridge",
+"North Bridge",
+"BIOS chip",
+"Super I/O controller"
+);
+
+}
+
+else if(currentQuestion == 6){
+
+document.getElementById("question").innerHTML =
+"Which front panel connector is used to restart the computer system?";
+
+showChoices(
+"Power LED",
+"HDD LED",
+"Power Switch",
+"Reset Switch"
+);
+
+}
+else if(currentQuestion == 7){
+
+document.getElementById("question").innerHTML =
+"What is the purpose of an Integrated Circuit (IC) on the motherboard?";
+
+showChoices(
+"It acts as a semiconductor device for logic",
+"It stores power for sudden outages",
+"It connects legacy floppy drives",
+"It physically secures the board"
+);
+
+}
+
+else if(currentQuestion == 8){
+
+document.getElementById("question").innerHTML =
+"Which slot is used to connect older types of hard drives?";
+
+showChoices(
+"PCI Slot",
+"Memory Slot",
+"IDE Slot",
+"USB Header"
+);
+
+}
+
+else if(currentQuestion == 9){
+
+document.getElementById("question").innerHTML =
+"What do jumpers do when placed on motherboard pins?";
+
+showChoices(
+"They regulate the voltage for RAM",
+"They cool the chipset components",
+"They act as switches to configure settings",
+"They secure expansion cards in place"
+);
+
+}
+else if(currentQuestion == 10){
+
+document.getElementById("question").innerHTML =
+"Which component manages the input and output functions on the board?";
+
+showChoices(
+"North Bridge",
+"South Bridge",
+"CMOS battery",
+"Inductor"
+);
+document.getElementById("nextQuestionBtn").style.display = "inline-block";
+}
+else if(currentQuestion > 10){
+
+document.getElementById("questionNumber").innerHTML =
+"Quiz Completed!";
+
+let message = "";
+
+if(score == 10){
+message = "🏆 Perfect! Outstanding!";
+}
+
+else if(score >= 8){
+message = "🌟 Excellent!";
+}
+
+else if(score >= 6){
+message = "👏 Very Good!";
+}
+
+else if(score >= 4){
+message = "👍 Good Job!";
+}
+
+else{
+message = "📚 Keep Practicing!";
+}
+
+document.getElementById("question").innerHTML =
+"Your Score: " + score + "/10<br><br>" + message;
+
+document.getElementById("choice1").style.display = "none";
+document.getElementById("choice2").style.display = "none";
+document.getElementById("choice3").style.display = "none";
+document.getElementById("choice4").style.display = "none";
+document.getElementById("restartBtn").style.display = "inline-block";
+document.getElementById("nextLessonBtn").style.display = "inline-block";
+document.getElementById("nextQuestionBtn").style.display = "none";
+}
+document.getElementById("result").innerHTML = "";
+
+answered = false;
+
+}
+
+</script>
+
+</body>
+</html>

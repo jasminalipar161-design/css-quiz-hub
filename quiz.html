@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>📝 Computer System Servicing Quiz</h1>
+
+<h3 id="questionNumber">Question 1/15</h3>
+
+<p id="question">Which device connects a home network to the Internet?</p>
+<button id="choice1" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice2" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice3" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice4" onclick="checkAnswer(this.innerHTML)"></button>
+
+<p id="result"></p>
+<br>
+
+<button id="restartBtn" onclick="location.reload()" style="display:none;">
+Restart Quiz
+</button>
+<button id="nextLessonBtn"
+onclick="location.href='motherboard-components-quiz.html'"
+style="display:none;">
+Next Lesson ➜
+</button>
+<button id="nextQuestionBtn" onclick="nextQuestion()">Next Question</button>
+<br><br>
+<a href="index.html">
+<button>Back to Home</button>
+</a>
+<script>
+function checkAnswer(answer){
+if(answered){
+return;
+}
+
+answered = true;
+
+if(answer == correctAnswers[currentQuestion - 1]){
+
+score++;
+
+document.getElementById("result").innerHTML =
+"<span style='color:green;font-weight:bold;'>✅ Correct!</span>";
+
+}
+
+else{
+
+document.getElementById("result").innerHTML =
+"<span style='color:red;font-weight:bold;'>❌ Incorrect!</span>";
+
+}
+
+}
+let currentQuestion = 1;
+let score = 0;
+let answered = false;
+let correctAnswers = [
+"Router",
+"Switch",
+"UTP Cable",
+"Local Area Network",
+"Cable Tester",
+"Windows",
+"RJ45",
+"Router",
+"Switch",
+"Operating System",
+"Modem",
+"UTP Cable",
+"Basic Input Output System",
+"Hard Drive",
+"Maintenance and repair"
+];
+function showChoices(a,b,c,d){
+
+document.getElementById("choice1").innerHTML = a;
+document.getElementById("choice2").innerHTML = b;
+document.getElementById("choice3").innerHTML = c;
+document.getElementById("choice4").innerHTML = d;
+
+}
+
+showChoices(
+"Router",
+"Switch",
+"Monitor",
+"Keyboard"
+);
+
+
+function nextQuestion(){
+showChoices(
+"Router",
+"Switch",
+"Monitor",
+"Keyboard"
+);
+
+currentQuestion++;
+
+document.getElementById("questionNumber").innerHTML =
+"Question " + currentQuestion + "/15";
+if(currentQuestion == 2){
+
+document.getElementById("question").innerHTML =
+"Which device connects multiple computers inside a LAN?";
+
+showChoices(
+"Switch",
+"Router",
+"Monitor",
+"Keyboard"
+);
+
+}
+
+else if(currentQuestion == 3){
+
+document.getElementById("question").innerHTML =
+"What type of cable is commonly used for Ethernet networks?";
+
+}
+
+else if(currentQuestion == 4){
+
+document.getElementById("question").innerHTML =
+"What does LAN stand for?";
+
+showChoices(
+"Local Area Network",
+"Long Area Network",
+"Large Area Network",
+"Local Access Network"
+);
+
+}
+
+else if(currentQuestion == 5){
+
+document.getElementById("question").innerHTML =
+"Which tool is used to test network cables?";
+
+showChoices(
+"Cable Tester",
+"Screwdriver",
+"Keyboard",
+"Mouse"
+);
+
+}
+else if(currentQuestion == 6){
+
+document.getElementById("question").innerHTML =
+"What is the purpose of an RJ45 connector?";
+
+showChoices(
+"Connect network cables",
+"Store files",
+"Display images",
+"Print documents"
+);
+
+}
+
+else if(currentQuestion == 7){
+
+document.getElementById("question").innerHTML =
+"What does UTP stand for?";
+
+showChoices(
+"Unshielded Twisted Pair",
+"Universal Transfer Port",
+"United Technology Program",
+"User Type Protocol"
+);
+
+}
+
+
+else if(currentQuestion == 8){
+
+document.getElementById("question").innerHTML =
+"Which device provides wireless network access?";
+
+showChoices(
+"Wireless Router",
+"Monitor",
+"Keyboard",
+"Printer"
+);
+
+}
+
+else if(currentQuestion == 9){
+
+document.getElementById("question").innerHTML =
+"What is the main purpose of a switch?";
+
+showChoices(
+"Connect devices in a network",
+"Create documents",
+"Play videos",
+"Scan pictures"
+);
+
+}
+else if(currentQuestion == 10){
+
+document.getElementById("question").innerHTML =
+"Which operating system is commonly used in computers?";
+
+showChoices(
+"Windows",
+"Android Charger",
+"HDMI",
+"RJ45"
+);
+
+}
+else if(currentQuestion == 11){
+
+document.getElementById("question").innerHTML =
+"What is the purpose of a modem in a network?";
+
+showChoices(
+"Connect to Internet Service Provider",
+"Store pictures",
+"Play music",
+"Print documents"
+);
+
+}
+
+
+else if(currentQuestion == 12){
+
+document.getElementById("question").innerHTML =
+"Which cable type is commonly used for Ethernet connection?";
+
+showChoices(
+"UTP Cable",
+"HDMI Cable",
+"Power Cable",
+"Audio Cable"
+);
+
+}
+else if(currentQuestion == 13){
+
+document.getElementById("question").innerHTML =
+"What does BIOS stand for?";
+
+showChoices(
+"Basic Input Output System",
+"Binary Internet Operating Setup",
+"Basic Internal Online Service",
+"Backup Input Operating Software"
+);
+
+}
+
+
+else if(currentQuestion == 14){
+
+document.getElementById("question").innerHTML =
+"Which component stores data permanently in a computer?";
+
+showChoices(
+"Hard Drive",
+"RAM",
+"Keyboard",
+"Mouse"
+);
+
+}
+
+else if(currentQuestion == 15){
+
+document.getElementById("question").innerHTML =
+"What is the main purpose of Computer System Servicing?";
+
+showChoices(
+"Maintain and repair computer systems",
+"Create games only",
+"Draw pictures",
+"Watch videos"
+);
+
+}
+if(currentQuestion == 15){
+    document.getElementById("choice1").style.display = "none";
+    document.getElementById("choice2").style.display = "none";
+    document.getElementById("choice3").style.display = "none";
+    document.getElementById("choice4").style.display = "none";
+
+    document.getElementById("questionNumber").innerHTML = "Quiz Completed!";
+
+    let message = "";
+
+    if(score == 15){
+        message = "🏆 Perfect! Outstanding!";
+    }
+    else if(score >= 12){
+        message = "🌟 Excellent!";
+    }
+    else if(score >= 9){
+        message = "👏 Very Good!";
+    }
+    else if(score >= 6){
+        message = "👍 Good Job!";
+    }
+    else{
+        message = "📚 Keep Practicing!";
+    }
+
+    document.getElementById("question").innerHTML =
+    "Your Score: " + score + "/15<br><br>" + message;
+
+    document.getElementById("restartBtn").style.display = "inline-block";
+    document.getElementById("nextLessonBtn").style.display = "inline-block";
+    document.getElementById("nextQuestionBtn").style.display = "none";
+}
+document.getElementById("result").innerHTML = "";
+
+answered = false;
+}
+
+</script>
+
+</body>
+</html>

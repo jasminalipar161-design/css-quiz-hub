@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Types and Parts of Computers Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>📝 Types and Parts of Computers Quiz</h1>
+
+<h3 id="questionNumber">Question 1/10</h3>
+
+<p id="question">
+Which component is known as the "brain" or "heart" of the computer system?
+</p>
+
+<button id="choice1" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice2" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice3" onclick="checkAnswer(this.innerHTML)"></button>
+
+<br><br>
+
+<button id="choice4" onclick="checkAnswer(this.innerHTML)"></button>
+
+<p id="result"></p>
+
+<br>
+
+<button id="restartBtn" onclick="location.reload()" style="display:none;">
+Restart Quiz
+</button>
+<button id="nextLessonBtn"
+onclick="location.href='quiz-completed.html'"
+style="display:none;">
+Finish Quiz ➜
+</button>
+<button id="nextQuestionBtn" onclick="nextQuestion()">Next Question</button>
+<br><br>
+<a href="index.html">
+<button>Back to Home</button>
+</a>
+
+<script>
+
+let currentQuestion = 1;
+let score = 0;
+let answered = false;
+let correctAnswers = [
+"Central Processing Unit (CPU)",
+"RAM is volatile (loses data when off); ROM is non-volatile",
+"Motherboard",
+"It converts 220vac house power into DC voltages",
+"Mouse",
+"To allow computers to exchange information and share data",
+"Hard Disk Drive (HDD)",
+"Ports",
+"Printer",
+"Keyboard"
+];
+
+function checkAnswer(answer){
+
+if(answered){
+return;
+}
+
+answered = true;
+
+if(answer == correctAnswers[currentQuestion - 1]){
+
+score++;
+
+document.getElementById("result").innerHTML =
+"<span style='color:green;font-weight:bold;'>✅ Correct!</span>";
+
+}else{
+
+document.getElementById("result").innerHTML =
+"<span style='color:red;font-weight:bold;'>❌ Incorrect!</span>";
+
+}
+
+}
+
+function showChoices(a,b,c,d){
+
+document.getElementById("choice1").innerHTML = a;
+document.getElementById("choice2").innerHTML = b;
+document.getElementById("choice3").innerHTML = c;
+document.getElementById("choice4").innerHTML = d;
+
+}
+
+showChoices(
+"Motherboard",
+"Power Supply Unit (PSU)",
+"Central Processing Unit (CPU)",
+"Hard Disk Drive (HDD)"
+);
+
+function nextQuestion(){
+
+currentQuestion++;
+
+document.getElementById("questionNumber").innerHTML =
+"Question " + currentQuestion + "/10";
+if(currentQuestion == 2){
+
+document.getElementById("question").innerHTML =
+"What is the main difference between RAM and ROM?";
+
+showChoices(
+"RAM is non-volatile; ROM is volatile",
+"RAM is volatile (loses data when off); ROM is non-volatile",
+"RAM is an external device; ROM is an internal device",
+"There is no difference; they are both the same"
+);
+
+}
+
+else if(currentQuestion == 3){
+
+document.getElementById("question").innerHTML =
+"Which internal component is the main circuit board that contains all the circuits to run the computer?";
+
+showChoices(
+"CPU",
+"RAM",
+"Motherboard",
+"Optical Disc Drive"
+);
+
+}
+
+else if(currentQuestion == 4){
+
+document.getElementById("question").innerHTML =
+"What does the Power Supply Unit (PSU) do?";
+
+showChoices(
+"It processes all information from programs",
+"It converts 220vac house power into DC voltages",
+"It stores digital documents and images",
+"It acts as the main pointing device"
+);
+
+}
+
+else if(currentQuestion == 5){
+
+document.getElementById("question").innerHTML =
+"Which of these is an input device used to control the on-screen cursor?";
+
+showChoices(
+"Monitor",
+"Printer",
+"Speaker",
+"Mouse"
+);
+
+}
+else if(currentQuestion == 6){
+
+document.getElementById("question").innerHTML =
+"What is the function of a Modem (Modulator-Demodulator)?";
+
+showChoices(
+"To convert digital files into paper copies",
+"To allow computers to exchange information and share data",
+"To listen to audio sources privately",
+"To provide working storage for processing data"
+);
+
+}
+
+else if(currentQuestion == 7){
+
+document.getElementById("question").innerHTML =
+"Which type of storage maintains its stored data even when the power is turned off?";
+
+showChoices(
+"RAM",
+"Hard Disk Drive (HDD)",
+"CPU Cache",
+"System Buffer"
+);
+
+}
+
+else if(currentQuestion == 8){
+
+document.getElementById("question").innerHTML =
+"These are connecting sockets on the outside of the computer used to plug in peripherals:";
+
+showChoices(
+"Ports",
+"Slots",
+"Modules",
+"Circuits"
+);
+
+}
+
+else if(currentQuestion == 9){
+
+document.getElementById("question").innerHTML =
+"Which device is a peripheral that converts digital documents into physical copies on paper?";
+
+showChoices(
+"Monitor",
+"Scanner",
+"Printer",
+"Modem"
+);
+
+}
+else if(currentQuestion == 10){
+
+document.getElementById("question").innerHTML =
+"Which of these is considered an EXTERNAL hardware component?";
+showChoices(
+"Memory Module",
+"Keyboard",
+"Optical Disc Drive",
+"CPU"
+);
+}
+else if(currentQuestion > 10){
+
+document.getElementById("questionNumber").innerHTML =
+"Quiz Completed!";
+let message = "";
+
+if(score == 10){
+message = "🏆 Perfect! Outstanding!";
+}
+else if(score >= 8){
+message = "🌟 Excellent!";
+}
+
+else if(score >= 6){
+message = "👏 Very Good!";
+}
+else if(score >= 4){
+message = "👍 Good Job!";
+}
+
+else{
+message = "📚 Keep Practicing!";
+}
+document.getElementById("question").innerHTML =
+"Your Score: " + score + "/10<br><br>" + message;
+
+document.getElementById("choice1").style.display = "none";
+document.getElementById("choice2").style.display = "none";
+document.getElementById("choice3").style.display = "none";
+document.getElementById("choice4").style.display = "none";
+
+document.getElementById("restartBtn").style.display = "inline-block";
+document.getElementById("nextLessonBtn").style.display = "inline-block";
+document.getElementById("nextQuestionBtn").style.display = "none";
+}
+document.getElementById("result").innerHTML = "";
+answered = false;
+}
+</script>
+</body>
+</html>
